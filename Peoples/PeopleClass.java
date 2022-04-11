@@ -1,20 +1,33 @@
 package Peoples;
 
 public abstract class PeopleClass implements People{
+    protected String name;
+    protected String type;
 
-    public PeopleClass() {
+    /*
+    public PeopleClass(String name, String type) {
+       this.name = name;
+        this.type = type;
     }
-
+*/
     @Override
     public String getName() {
-        // TODO Auto-generated method stub
-        return null;
+        return name;
     }
 
     @Override
     public String getType() {
-        // TODO Auto-generated method stub
-        return null;
+       return type;
     }
+
+    @Override
+    public boolean equals(Object e){
+        if(this == e)
+            return true;
+            
+        PeopleClass tmp =(PeopleClass) e;
+        return tmp.getName().equals(name);
+    }
+
     
 }

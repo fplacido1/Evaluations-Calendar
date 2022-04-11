@@ -2,13 +2,13 @@ public class Main{
 
     //comands
     private static final String PEOPLE = "people";
-    private static final String PROFESSOR = "professor";
-    private static final String STUDENT = "student";
+    private static final String PROFESSOR = "professor";//feito
+    private static final String STUDENT = "student";//feito
     private static final String COURSES = "courses";
-    private static final String COURSE = "course";
+    private static final String COURSE = "course";//feito
     private static final String ROSTER = "roster";
-    private static final String ASSIGN = "assign";
-    private static final String ENROL = "enrol";
+    private static final String ASSIGN = "assign";//feito
+    private static final String ENROL = "enrol";//feito
     private static final String INTERSECTION = "intersection";
     private static final String COURSEDEADLINES = "coursedeadlines";
     private static final String PERSONALDEADLINES = "personaldeadlines";

@@ -1,29 +1,22 @@
 package Course;
 
+import java.sql.*;
+
 public class Tests extends EventsClass{
 
-    @Override
-    public String getName() {
-        // TODO Auto-generated method stub
-        return null;
+    private static final String TESTS = "Tests";
+
+    private Time hour;//ver ppt professora
+
+    public Tests(String name, Date date, Time hour){
+        this.name = name;
+        this.date = date;
+        this.hour = hour;
+        this.type = TESTS;
     }
 
-    @Override
-    public int getYear() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
-    public int getMonth() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
-    public int getDay() {
-        // TODO Auto-generated method stub
-        return 0;
+    public Time getHour(){//ver ppt prof
+        return hour;
     }
     
 }

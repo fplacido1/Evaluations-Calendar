@@ -10,11 +10,12 @@ public interface Course {
 
     Iterator<Events> testsIterator();
 
-    void addTeacher(Object e);
+    void addTeacher(People e);
 
-    void addStudents(Object e);
+    void addStudents(People e);
 
     void addTest(Object e);
 
-    
+    boolean eqauls(Object e);
+
 }

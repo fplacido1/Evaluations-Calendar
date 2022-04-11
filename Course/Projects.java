@@ -1,29 +1,14 @@
 package Course;
+import java.sql.Date;
 
 public class Projects extends EventsClass{
 
-    @Override
-    public String getName() {
-        // TODO Auto-generated method stub
-        return null;
+    private static final String PROJECTS = "Project";
+
+    public Projects(String name, Date date) {
+        this.name = name;
+        this.date = date;
+        this.type = PROJECTS;
     }
 
-    @Override
-    public int getYear() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
-    public int getMonth() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
-    public int getDay() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-    
 }

@@ -5,25 +5,27 @@ import Peoples.*;
 
 public class CourseClass implements Course{
 
-    public CourseClass() {
+    private String name;
+    Array<People> participants;
+
+
+    public CourseClass(String name) {
+        this.name = name;
     }
 
     @Override
-    public void addStudents(Object e) {
-        // TODO Auto-generated method stub
-        
+    public void addStudents(People e) {
+       participants.insertLast(e);
     }
 
     @Override
-    public void addTeacher(Object e) {
-        // TODO Auto-generated method stub
-        
+    public void addTeacher(People e) {
+        participants.insertLast(e);
     }
 
     @Override
     public String getName() {
-        // TODO Auto-generated method stub
-        return null;
+       return name;
     }
 
     @Override
@@ -42,6 +44,15 @@ public class CourseClass implements Course{
     public void addTest(Object e) {
         // TODO Auto-generated method stub
         
+    }
+
+    @Override
+    public boolean eqauls(Object e) {
+        if(this == e)
+            return true;
+            
+        CourseClass tmp =(CourseClass) e;
+        return tmp.getName().equals(name);
     }
     
 }

@@ -6,4 +6,6 @@ public interface People {
 
     String getType();
 
+    boolean equals(Object e);
+
 }
