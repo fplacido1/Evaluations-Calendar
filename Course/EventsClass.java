@@ -1,12 +1,12 @@
 package Course;
 
-import java.sql.Date;
+import java.time.*;
 
 public abstract class EventsClass implements Events{
 
     protected String name;
     protected String type;
-    protected Date date; //ver ppt da stora
+    protected LocalDate date;
 
     public String getName(){
         return name;
@@ -16,8 +16,9 @@ public abstract class EventsClass implements Events{
         return type;
     }
 
-    public Date getDate(){
+    public LocalDate getDate(){
         return date;
     }
+    
     
 }
