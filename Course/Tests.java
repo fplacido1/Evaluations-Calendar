@@ -14,7 +14,7 @@ public class Tests extends EventsClass{
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.type = TESTS;
+        this.type = TESTS; 
     }
 
    public LocalTime getStartTime(){
