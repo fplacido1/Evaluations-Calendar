@@ -103,7 +103,7 @@ public class SystemClass implements SystemInterface{
     }
 
     public int conflictClassificationNumber(LocalDate date, LocalTime startTime, LocalTime endTime, String job, String problem){
-        Array<Course> tmp = new ArrayClass<Course>();
+        Array<Course> tmpCourses = new ArrayClass<Course>();
 
         switch(problem){ //metodo privado
         
@@ -112,7 +112,7 @@ public class SystemClass implements SystemInterface{
                 for(int i = 0; i < courses.size(); i++){
                 Course tmp1 = courses.get(i);
                 if(tmp1.conflictDate(date) && tmp1.conflictTime(startTime, endTime)){
-                    tmp.insertLast(tmp1);
+                    tmpCourses.insertLast(tmp1);
               
                 }
             }
@@ -122,7 +122,7 @@ public class SystemClass implements SystemInterface{
             for(int i = 0; i < courses.size(); i++){
                 Course tmp1 = courses.get(i);
                 if(tmp1.conflictDate(date) && !tmp1.conflictTime(startTime, endTime)){
-                    tmp.insertLast(tmp1);;
+                    tmpCourses.insertLast(tmp1);;
                
                 }
             }
@@ -132,38 +132,27 @@ public class SystemClass implements SystemInterface{
             for(int i = 0; i < courses.size(); i++){
                 Course tmp1 = courses.get(i);
                 if(!tmp1.conflictDate(date)){
-                    tmp.insertLast(tmp1);
+                    tmpCourses.insertLast(tmp1);
                 }
             }
             break;
         }
     int nOfPeople = 0;
-    Array<Course> tmp2 = new ArrayClass<Course>();
-        if(tmp.size() > 1)
-            for(int k = 0; k < tmp.size()-1; k++ ){
-               intersection(tmp.get(k).getName(), tmp.get(k+1).getAllPeople())
-            }
+    Array<People> intersected = null;
 
-
-
-
-
-        for(int i = 0; i < tmp.size(); i++){
-            for(int j = 0; i < tmp.get(i).getNumberOfPeople(); j++){
-                if(tmp.get(i).getPeople(j).getType().compareTo(job) == 0){
-                    nOfPeople++;
-                }
-            }
-            
-        }
-        else{
-        return 0;
+    for(int i = 0; i <  tmpCourses.size() - 1; i ++){
+        Array<People> coursePeople = tmpCourses.get(i).getAllPeople();
+        intersected = intersection(intersected, coursePeople);
     }
 
+
+        for(int i = 0; i < intersected.size(); i++){
+            if(intersected.get(i).getType().compareTo(job) == 0){
+                nOfPeople++;
+            }
+        }
+
         return nOfPeople;
-
-
-
     }
 
 
@@ -207,26 +196,27 @@ public class SystemClass implements SystemInterface{
         return getCourse(courseName).eventsIterator();
     }
 
-    //cmd-intersection
-    @Override
-    public void intersection(String courseName1, String courseName2){ //ver return de algo
-        Course tmp1 = getCourse(courseName1);
-        intersection(courseName2, intersection(courseName2, tmp1.getAllPeople()));
+    public Course getCourseByName(String courseName){ //podemos fazer um metodo privado para o ppl como este
+        Course courseTmp = new CourseClass(courseName);
+
+        int courseIndex = courses.searchIndexOf(courseTmp);
+
+       return courses.get(courseIndex);
     }
 
-    //cmd-intersection
-    private Array<People> intersection(String courseName, Array<People> intersectedPeople){
-        Array<People> intersected = new ArrayClass<>();
-        Course tmp = getCourse(courseName);
-
-        for(int i = 0; i < intersectedPeople.size(); i++){
-            for(int j = 0; j < tmp.getSize(); j++){
-                    if(intersectedPeople.get(i).equals(tmp.getPeople(j))){
-                intersected.insertLast(tmp.getPeople(j));
-                 }
+//cmd interseciont
+    public Array <People> intersection (Array<People> people1, Array <People> people2){
+        Array<People> intersected = new  ArrayClass<People>();
+        if(people1 == null){// 1 vez, people1 e sempre null
+            return people2;
+        }else{
+            for(int i = 0; i < people1.size(); i++){
+                if(people2.searchForward(people1.get(i)))
+                    intersected.insertLast(people1.get(i));
             }
+            return intersected;
         }
-        return intersected;
+
     }
 
     private Course getCourse(String courseName){ //podemos fazer um metodo privado para o ppl como este
@@ -236,5 +226,7 @@ public class SystemClass implements SystemInterface{
 
        return courses.get(courseIndex);
     }
+
+  
     
 }

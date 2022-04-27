@@ -2,6 +2,10 @@ import java.time.*;
 import java.util.Scanner;
 import Calendar.*;
 
+import Array.*;
+import Peoples.*;
+import Course.*;
+
 public class Main{
     
 
@@ -125,11 +129,13 @@ private static void addProfessor(Scanner in, SystemClass system){
 
 private static void intersection(Scanner in, SystemClass system){
     int numberOfCourses = in.nextInt();
-    String courseName1 = in.nextLine();
+    Array<People> intersected = null;
 
-    for(int i = 0; i <  numberOfCourses - 2; i ++){
-        String courseName2 = in.nextLine();
-        system.intersection(courseName1, courseName2);
+    for(int i = 0; i <  numberOfCourses - 1; i ++){
+        String courseName = in.nextLine();
+        Array<People> coursePeople = system.getCourseByName(courseName).getAllPeople();
+        
+       intersected = system.intersection(intersected, coursePeople);
     } // so preciso de chamar o iterador com o ult intersected
 }
 

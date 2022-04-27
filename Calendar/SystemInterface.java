@@ -30,6 +30,8 @@ public interface SystemInterface {
     
     Iterator<Events> eventsIterator(String courseName);
     
-    void intersection(String courseName1, String courseName2);
+    Array <People> intersection(Array<People> people1, Array<People> people2);
+
+    Course getCourseByName(String courseName);
     
 }
