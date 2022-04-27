@@ -4,8 +4,7 @@ import java.time.*;
 
 public class Tests extends EventsClass{
 
-    private static final String TESTS = "Tests";
-    
+    private static final String TESTS = "Tests";z
     private LocalTime startTime;
     private LocalTime endTime;
 
