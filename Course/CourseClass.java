@@ -27,7 +27,7 @@ public class CourseClass implements Course{
        for(int i = 0; i < participants.size(); i++){
         People tmp = participants.get(i);
            if(tmp.getType().equals("Teacher")){
-            tmp.addStudent(1);
+            ((Teachers)tmp).addStudents(1);
            }
        }
     }
@@ -38,7 +38,7 @@ public class CourseClass implements Course{
 
     @Override
     public void addTeacher(People e) {
-        e.addStudents(numberOfStudents);
+        ((Teachers)e).addStudents(numberOfStudents);
         participants.insertLast(e);
     }
 
@@ -98,6 +98,18 @@ public class CourseClass implements Course{
         return participants.size();
     }
 
+    public Iterator<Events> deadlineIterator(){
+        Array <Events> arrayTmp = getEvents("Project");
+
+        return arrayTmp.iterator();
+    }
+
+    public Iterator<Events> testIterator(){
+        Array <Events> arrayTmp = getEvents("Teste");
+
+        return arrayTmp.iterator();
+    }
+
     @Override
     public Array<People> getAllPeople() {
         // TODO Auto-generated method stub
@@ -130,5 +142,15 @@ public class CourseClass implements Course{
         }return false;
     }
 
-    
+    private Array<Events> getEvents(String type){
+        Array <Events> arrayTmp = new ArrayClass<Events>();
+
+        for(int i = 0; i < events.size(); i++){
+            Events tmp = events.get(i);
+            if(tmp.getType().compareTo(type) == 0){
+                arrayTmp.insertLast(tmp);
+            }
+        }
+        return arrayTmp;
+    }
 }
