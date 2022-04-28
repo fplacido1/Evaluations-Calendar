@@ -219,6 +219,35 @@ public class SystemClass implements SystemInterface{
 
     }
 
+    public Array <People> stressometer(int numberOfStudents){
+
+
+
+
+
+        return null;
+    }
+
+    
+    public int getEventStreak(){
+
+        for(int i = 0; i < people.size(); i++){
+            Array<Course> tmpCourses = new ArrayClass<Course>();
+
+            if(people.get(i).getType().compareTo("Student") == 0)
+                for(int j = 0; j < courses.size(); j++){
+                    if(courses.get(j).isStudent(people.get(i))){
+                        tmpCourses.insertLast(courses.get(j));
+                    }
+                }
+                
+
+                
+            
+        }
+        return 0;
+    }
+
     private Course getCourse(String courseName){ //podemos fazer um metodo privado para o ppl como este
         Course courseTmp = new CourseClass(courseName);
 

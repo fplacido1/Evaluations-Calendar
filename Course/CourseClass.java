@@ -105,7 +105,7 @@ public class CourseClass implements Course{
     }
 
     public Iterator<Events> testIterator(){
-        Array <Events> arrayTmp = getEvents("Teste");
+        Array <Events> arrayTmp = getEvents("Tests");
 
         return arrayTmp.iterator();
     }
@@ -131,8 +131,8 @@ public class CourseClass implements Course{
     public boolean conflictTime(LocalTime startTime, LocalTime endTime){
         for(int i = 0; i < events.size(); i++){
             Events tmp = events.get(i);
-            LocalTime begining = tmp.getStartTime();// possivel erro
-            LocalTime ending = tmp.getEndTime();//possivel erro
+            LocalTime begining = ((Tests)tmp).getStartTime();// possivel erro
+            LocalTime ending = ((Tests)tmp).getEndTime();//possivel erro
 
             if(tmp.getType().compareTo("Tests") == 0)
              if((begining.isAfter(startTime) && begining.isBefore(endTime)) || (ending.isAfter(startTime) && ending.isBefore(endTime))
@@ -141,6 +141,17 @@ public class CourseClass implements Course{
              }
         }return false;
     }
+
+   public boolean isStudent(Student tmp){
+       boolean found = false;
+       for(int i = 0; i < participants.size(); i++ ){
+           if(participants.get(i).equals(tmp)){
+               found = true;
+               break;
+           }
+
+       }return found;
+   }
 
     private Array<Events> getEvents(String type){
         Array <Events> arrayTmp = new ArrayClass<Events>();

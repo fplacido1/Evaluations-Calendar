@@ -35,4 +35,6 @@ public interface Course {
     boolean conflictTime(LocalTime startTime, LocalTime endTime);
 
     int getNumberOfPeople();
+
+    boolean isStudent(People tmp);
 }
